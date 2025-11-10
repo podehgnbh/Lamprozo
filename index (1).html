@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="لمبروزو - منصة قانونية متكاملة بمساعد ذكاء اصطناعي، مكتبة قانونية، ومنتدى قانوني">
+    <meta name="keywords" content="قانون, استشارات قانونية, مساعد ذكي, منتدى قانوني, محامين">
+    <meta name="author" content="عبد الله مصطفى">
+    <title>لمبروزو - منصتك القانونية المتكاملة</title>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1B4965;
+            --primary-dark: #0f2d42;
+            --accent: #D4AF37;
+            --accent-dark: #c49a2e;
+            --text: #1a1a1a;
+            --text-light: #666;
+            --bg: #f5f7fa;
+            --white: #ffffff;
+            --border: #e0e0e0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(27, 73, 101, 0.3);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-decoration: none;
+            color: var(--white);
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent), #e6c200);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .btn {
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: var(--primary);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: rgba(212, 175, 55, 0.08);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(20px); }
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            font-weight: 900;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Section */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 900;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 4rem;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Features */
+        .features {
+            background: var(--white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+            padding: 2.5rem;
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 1px solid var(--border);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(27, 73, 101, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .feature-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        /* Sections Grid */
+        .sections {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+        }
+
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .section-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border);
+        }
+
+        .section-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(27, 73, 101, 0.2);
+        }
+
+        .section-card-header {
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .section-card-content {
+            padding: 2.5rem;
+        }
+
+        .section-card h3 {
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+
+        .section-card p {
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .section-card .btn {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: rgba(212, 175, 55, 0.1);
+            border-radius: 50%;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+            color: #ccc;
+            padding: 4rem 2rem 1.5rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 1.5rem;
+            text-align: center;
+            color: #999;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .header-container {
+                padding: 0 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            section {
+                padding: 3rem 0;
+            }
+        }
+
+        /* Animations */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .feature-card {
+            animation: slideIn 0.6s ease-out;
+        }
+
+        .section-card {
+            animation: slideIn 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">⚖️</div>
+                <span>لمبروزو</span>
+            </a>
+            <nav>
+                <a href="#features">الميزات</a>
+                <a href="#sections">الأقسام</a>
+                <a href="#contact">تواصل</a>
+            </nav>
+            <button class="btn btn-primary">دخول</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>منصتك القانونية المتكاملة</h1>
+            <p>احصل على استشارات قانونية فورية من مساعد ذكي متخصص، تصفح مكتبة قانونية شاملة، وتواصل مع أفضل المحامين المتخصصين</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary">ابدأ الآن</button>
+                <button class="btn btn-secondary">تعرف على المزيد</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">لماذا لمبروزو؟</h2>
+            <p class="section-subtitle">منصة متكاملة توفر كل ما تحتاجه في مجال القانون بتقنيات حديثة وسهولة استخدام</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>سريع وموثوق</h3>
+                    <p>احصل على الإجابات بسرعة من مساعد ذكي موثوق متخصص في القانون والاستشارات القانونية</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>بحث قوي ومتقدم</h3>
+                    <p>ابحث بسهولة عن المحتوى القانوني الذي تحتاجه من مكتبة شاملة وموثوقة</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>مجتمع نشط وفعال</h3>
+                    <p>تواصل مع متخصصين ومهتمين بالقانون في منتدى تفاعلي وآمن</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>مكتبة شاملة</h3>
+                    <p>مجموعة ضخمة من الكتب والملازم والمحاضرات الإلكترونية المتخصصة</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👨‍⚖️</div>
+                    <h3>محامين متخصصين</h3>
+                    <p>تواصل مباشر مع محامين متخصصين وموثوقين في مختلف التخصصات القانونية</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📰</div>
+                    <h3>أخبار قانونية حديثة</h3>
+                    <p>ابق على اطلاع بأحدث الأخبار والأحكام والتشريعات القانونية</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sections Overview -->
+    <section class="sections" id="sections">
+        <div class="container">
+            <h2 class="section-title">أقسام المنصة</h2>
+            <p class="section-subtitle">استكشف جميع الخدمات والأدوات المتاحة على منصة لمبروزو</p>
+            <div class="sections-grid">
+                <div class="section-card">
+                    <div class="section-card-header"></div>
+                    <div class="section-card-content">
+                        <h3>🤖 المساعد القانوني الذكي</h3>
+                        <p>احصل على إجابات فورية وموثوقة على أسئلتك القانونية من مساعد ذكي متخصص في القانون</p>
+                        <button class="btn btn-primary">اسأل الآن</button>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <div class="section-card-header"></div>
+                    <div class="section-card-content">
+                        <h3>📚 المكتبة القانونية</h3>
+                        <p>مجموعة شاملة من الكتب والملازم والمحاضرات الإلكترونية والمراجع القانونية</p>
+                        <button class="btn btn-primary">استكشف المكتبة</button>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <div class="section-card-header"></div>
+                    <div class="section-card-content">
+                        <h3>💬 المنتدى القانوني</h3>
+                        <p>شارك في النقاشات القانونية مع مجتمع من المتخصصين والمهتمين بالقانون</p>
+                        <button class="btn btn-primary">شاهد النقاشات</button>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <div class="section-card-header"></div>
+                    <div class="section-card-content">
+                        <h3>👨‍⚖️ دليل المحامين</h3>
+                        <p>تصفح قائمة المحامين المتخصصين واختر الأنسب لقضيتك بسهولة</p>
+                        <button class="btn btn-primary">ابحث عن محام</button>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <div class="section-card-header"></div>
+                    <div class="section-card-content">
+                        <h3>📰 الأخبار القانونية</h3>
+                        <p>ابق على اطلاع بأحدث الأخبار والأحكام والتشريعات القانونية المهمة</p>
+                        <button class="btn btn-primary">اقرأ الأخبار</button>
+                    </div>
+                </div>
+
+                <div class="section-card">
+                    <div class="section-card-header"></div>
+                    <div class="section-card-content">
+                        <h3>🎓 المحاضرات الإلكترونية</h3>
+                        <p>مجموعة متنوعة من المحاضرات والدورات التدريبية القانونية المتخصصة</p>
+                        <button class="btn btn-primary">شاهد المحاضرات</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="contact">
+        <div class="container">
+            <h2>هل أنت مستعد للبدء؟</h2>
+            <p>انضم إلى آلاف المستخدمين الذين يستفيدون من خدماتنا القانونية المتكاملة</p>
+            <button class="btn btn-primary">سجل الآن مجاناً</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h4>عن منصة لمبروزو</h4>
+                    <p>منصة قانونية متكاملة توفر مساعد ذكي متخصص، مكتبة قانونية شاملة، منتدى قانوني تفاعلي، ودليل محامين موثوق</p>
+                </div>
+                <div class="footer-section">
+                    <h4>الأقسام الرئيسية</h4>
+                    <ul>
+                        <li><a href="#">المساعد الذكي</a></li>
+                        <li><a href="#">المكتبة القانونية</a></li>
+                        <li><a href="#">المنتدى</a></li>
+                        <li><a href="#">دليل المحامين</a></li>
+                        <li><a href="#">الأخبار</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>تواصل معنا</h4>
+                    <p><strong>عبد الله مصطفى</strong></p>
+                    <p><a href="mailto:podemostfa6@gmail.com">podemostfa6@gmail.com</a></p>
+                    <p>© 2024 لمبروزو. جميع الحقوق محفوظة</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>تم تطوير هذه المنصة بواسطة عبد الله مصطفى | جميع الحقوق محفوظة © 2024</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Button interactions
+        document.querySelectorAll('.btn').forEach(button => {
+            button.addEventListener('click', function() {
+                if (this.textContent.includes('دخول') || this.textContent.includes('سجل')) {
+                    alert('يرجى الدخول للمنصة للوصول إلى جميع الميزات');
+                } else {
+                    alert('جاري التحميل...');
+                }
+            });
+        });
+
+        // Add scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .section-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
